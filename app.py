@@ -6,6 +6,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
+# ---------------------🧭 Streamlit Config ----------------------
+# This MUST be the very first Streamlit command in your script.
+st.set_page_config(page_title="Devil Cars", page_icon="🚗", layout="wide")
+st.title("🚘 Devil Cars: Smart Car Price Predictor")
+
 # ---------------------🎨 Custom CSS Styling ----------------------
 st.markdown("""
     <style>
@@ -89,10 +94,6 @@ df = pd.read_csv('Car Sell Dataset.csv')
 model = joblib.load('PipelineCar.pkl')
 a = df.drop(columns=['Price']).head(5)
 print(model.predict(a))
-
-# ---------------------🧭 Streamlit Config ----------------------
-st.set_page_config(page_title="Devil Cars", page_icon="🚗", layout="wide")
-st.title("🚘 Devil Cars: Smart Car Price Predictor")
 
 # ---------------------📌 Sidebar Navigation ----------------------
 page = st.sidebar.radio("📂 Menu", ["🏠 Home", "📊 Data Analysis", "🧾 Prediction"])
